@@ -18,10 +18,7 @@ namespace adonetCustomerProject
             InitializeComponent();
         }
         SqlConnection sqlConnection = new SqlConnection("Server=ONURALPKAYGIN; initial catalog=DbCustomer; integrated security=true");
-        private void label2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnList_Click(object sender, EventArgs e)
         {
@@ -71,6 +68,19 @@ namespace adonetCustomerProject
             command.ExecuteNonQuery();
             sqlConnection.Close();
             MessageBox.Show("City Updated Successfully", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM TblCity WHERE CityName=@cityName", sqlConnection);
+            command.Parameters.AddWithValue("@cityName", txtCityName.Text);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+            sqlConnection.Close();
+
         }
     }
 }

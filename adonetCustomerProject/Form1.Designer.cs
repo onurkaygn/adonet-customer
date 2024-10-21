@@ -96,7 +96,6 @@
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "City Name:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtCityCountry
             // 
@@ -153,6 +152,7 @@
             this.btnFind.TabIndex = 12;
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // Form1
             // 
