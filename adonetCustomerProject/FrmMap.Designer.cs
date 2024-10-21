@@ -51,6 +51,7 @@
             this.btnOpenCustomerForm.TabIndex = 1;
             this.btnOpenCustomerForm.Text = "Customer Operations";
             this.btnOpenCustomerForm.UseVisualStyleBackColor = true;
+            this.btnOpenCustomerForm.Click += new System.EventHandler(this.btnOpenCustomerForm_Click);
             // 
             // btnExit
             // 
