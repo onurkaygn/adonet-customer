@@ -58,6 +58,7 @@
             this.btnFind.TabIndex = 24;
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnUpdate
             // 
@@ -67,6 +68,7 @@
             this.btnUpdate.TabIndex = 23;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -76,6 +78,7 @@
             this.btnDelete.TabIndex = 22;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -85,6 +88,7 @@
             this.btnAdd.TabIndex = 21;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtCustomerSurname
             // 
@@ -129,6 +133,7 @@
             this.btnList.TabIndex = 16;
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
+            this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
             // dataGridView1
             // 
@@ -250,6 +255,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmCustomer";
             this.Text = "Customer Form";
+            this.Load += new System.EventHandler(this.FrmCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
