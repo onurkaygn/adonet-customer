@@ -17,7 +17,7 @@ namespace adonetCustomerProject
         {
             InitializeComponent();
         }
-
+        SqlConnection sqlConnection = new SqlConnection("Server=ONURALPKAYGIN; initial catalog=DbCustomer; integrated security=true");
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -25,9 +25,8 @@ namespace adonetCustomerProject
 
         private void btnList_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=ONURALPKAYGIN; initial catalog=DbCustomer; integrated security=true");
             sqlConnection.Open();
-            SqlCommand command = new SqlCommand("Select CityName, CityCountry From TblCity", sqlConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM TblCity", sqlConnection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -40,5 +39,38 @@ namespace adonetCustomerProject
 
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("INSERT INTO TblCity (CityName, CityCountry) VALUES (@cityName, @cityCountry)", sqlConnection);
+            command.Parameters.AddWithValue("@cityName", txtCityName.Text);
+            command.Parameters.AddWithValue("@cityCountry", txtCityCountry.Text);
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("City Added Successfully");
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("DELETE FROM TblCity WHERE CityId=@cityId", sqlConnection);
+            command.Parameters.AddWithValue("@cityId", txtCityId.Text);
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("City Deleted Successfully", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("UPDATE TblCity SET CityName=@cityName, CityCountry=@cityCountry WHERE CityId=@cityId", sqlConnection);
+            command.Parameters.AddWithValue("@cityId", txtCityId.Text);
+            command.Parameters.AddWithValue("@cityName", txtCityName.Text);
+            command.Parameters.AddWithValue("@cityCountry", txtCityCountry.Text);
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("City Updated Successfully", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }
